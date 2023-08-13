@@ -60,6 +60,7 @@ const Stock = () => {
               color="textSecondary"
               duration={0.4}
               variant="dimmed"
+              faceDown
             />
           ))}
         </StockContainer>

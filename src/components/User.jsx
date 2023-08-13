@@ -47,9 +47,15 @@ const User = () => {
   const handleRestart = () => {
     dispatch(restartGame())
   }
+  const getScore = user?.stock?.length && user?.stock?.reduce((sum, { id }) => {
+    const data = id.split('').map(Number).filter(Number.isInteger);
+    const totalSum = sum + data?.reduce((total, digit) => total + digit, 0);
+    return totalSum
+  }, 0)
   return (
     <>
       <Title>{`Player: ${user?.name}`}</Title>
+      <Title>{`Score: ${getScore}`}</Title>
       {!user?.stock?.length && (
         <SubTitle>Your stock is empty</SubTitle>
       )}
